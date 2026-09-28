@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BookStore</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <main class="page">
+    <div class="page-head">
+      <h2>Каталог книг</h2>
+      <div style="display:flex;gap:12px;align-items:center">
+        <span class="counter" id="counter"></span>
+        <a class="btn" href="/static/book-form.html" id="add-book" hidden>+ Добавить книгу</a>
+      </div>
+    </div>
+
+    <section class="toolbar" id="toolbar" hidden>
+      <div class="field search">
+        <label for="search">Поиск по названию и описанию</label>
+        <input class="input" id="search" type="search" placeholder="Например, «роман» или «Дюна»" maxlength="100">
+      </div>
+      <div class="field">
+        <label for="genre">Жанр</label>
+        <select class="input" id="genre"><option value="">Все жанры</option></select>
+      </div>
+      <div class="field">
+        <label for="sort">Дата издания</label>
+        <select class="input" id="sort">
+          <option value="">Без сортировки</option>
+          <option value="date_desc">Сначала новые</option>
+          <option value="date_asc">Сначала старые</option>
+        </select>
+      </div>
+      <label class="check" style="padding-bottom:10px"><input type="checkbox" id="in-stock"> Только в наличии</label>
+    </section>
+
+    <div class="legend" id="legend" hidden>
+      <span><i class="sw-new"></i>Новинка: издана менее 30 дней назад</span>
+      <span><i class="sw-illiquid"></i>Неликвид: старше 2 лет, на складе больше 5 шт.</span>
+    </div>
+
+    <div class="alert alert-error" id="error" hidden></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>Книги не найдены</div>
+  </main>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/catalog.js"></script>
+</body>
+</html>
